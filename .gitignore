@@ -45,3 +45,6 @@ next-env.d.ts
 
 # original build prompt - references confidential Bitek context; keep out of the public repo
 portfolio-build-prompt.md
+
+# private assets - never commit (Bitek confidentiality)
+/_private/
