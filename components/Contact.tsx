@@ -22,7 +22,7 @@ export default function Contact() {
           <SocialLinks size="lg" />
         </div>
         <p className="mt-10 text-center text-sm text-muted">
-          © {new Date().getFullYear()} {profile.name}. Built with Next.js — designed &amp; deployed from a single prompt.
+          © {new Date().getFullYear()} {profile.name}. Built with Next.js.
         </p>
       </div>
     </footer>

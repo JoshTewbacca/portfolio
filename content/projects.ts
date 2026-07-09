@@ -22,17 +22,5 @@ export const projects: Project[] = [
     tags: ["Python", "Dynamics", "Simulation"],
     highlight: true,
   },
-  {
-    title: "510 MW Solar PV Techno-Economic Analysis",
-    description:
-      "Excel-based techno-economic model for a utility-scale solar PV plant.",
-    tags: ["Energy", "Modelling", "Excel"],
-  },
-  {
-    title: "Our Little Corner",
-    description:
-      "A private couples web app (letters, memories, countdowns, playlists) built with Next.js on Vercel.",
-    tags: ["Next.js", "Firebase", "Full-stack"],
-  },
   // TODO: add/trim — piston-pump design, psychrometrics sim, tutoring tools, etc.
 ];

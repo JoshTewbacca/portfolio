@@ -8,6 +8,8 @@ export type Experience = {
   location?: string;
   bullets: string[];
   tags: string[];
+  image?: string; // /public path, optional
+  imageCaption?: string;
 };
 
 export const experience: Experience[] = [
@@ -24,12 +26,14 @@ export const experience: Experience[] = [
       "Led a UI redesign of a desktop reporting utility using a formal brand-token design system.",
     ],
     tags: ["R&D", "Python", "Automation", "Technical Writing", "UI Design"],
+    image: "/bitek-ta-stats.png",
+    imageCaption: "TA Statistics — internal reporting tool UI redesign, Bitek Industries.",
   },
   {
     company: "Metix",
     role: "Software Intern",
-    start: "20XX", // TODO: dates
-    end: "20XX", // TODO: dates
+    start: "Jan 2026",
+    end: "Present",
     bullets: ["Built an AI-assisted document-generation tool for engineers."],
     tags: ["AI", "Tooling", "Software"],
   },

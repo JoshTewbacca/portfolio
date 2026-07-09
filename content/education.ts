@@ -9,7 +9,7 @@ export const education: Education[] = [
   {
     institution: "University of Cape Town",
     qualification: "BSc (Eng) Mechanical Engineering",
-    period: "20XX – 2025", // TODO: start year
+    period: "2023 – 2026",
     achievements: ["First Class", "Dean's Merit List (2023–2025)"],
   },
 ];
