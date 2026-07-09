@@ -12,6 +12,11 @@ export default function Experience() {
   const olRef = useRef<HTMLOListElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
   const dotRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  // Tracks the card the user just interacted with, so that when opening one
+  // accordion item closes another (above or below it), the page doesn't
+  // silently scroll out from under them as the collapsing card's height
+  // animates away — the clicked card stays pinned in the viewport instead.
+  const anchorRef = useRef<{ el: HTMLLIElement; top: number } | null>(null);
 
   useLayoutEffect(() => {
     const ol = olRef.current;
@@ -32,11 +37,34 @@ export default function Experience() {
       line.style.height = `${bottom - top}px`;
     };
 
-    updateLine();
-    const observer = new ResizeObserver(updateLine);
+    const compensateScroll = () => {
+      const anchor = anchorRef.current;
+      if (!anchor) return;
+      const newTop = anchor.el.getBoundingClientRect().top;
+      const delta = newTop - anchor.top;
+      if (delta !== 0) {
+        window.scrollBy(0, delta);
+        anchor.top = anchor.el.getBoundingClientRect().top;
+      }
+    };
+
+    const tick = () => {
+      compensateScroll();
+      updateLine();
+    };
+
+    tick();
+    const observer = new ResizeObserver(tick);
     observer.observe(ol);
     return () => observer.disconnect();
   }, []);
+
+  const handleToggle = (index: number, li: HTMLLIElement | null) => {
+    if (li) {
+      anchorRef.current = { el: li, top: li.getBoundingClientRect().top };
+    }
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
 
   return (
     <Section id="experience" title="Experience" kicker="Interactive CV">
@@ -72,7 +100,7 @@ export default function Experience() {
                   type="button"
                   aria-expanded={open}
                   aria-controls={panelId}
-                  onClick={() => setOpenIndex(open ? null : index)}
+                  onClick={(e) => handleToggle(index, e.currentTarget.closest("li"))}
                   className="flex w-full items-center justify-between gap-4 rounded-neuo p-6 text-left sm:p-8"
                 >
                   <span>

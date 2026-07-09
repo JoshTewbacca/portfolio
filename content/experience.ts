@@ -15,12 +15,12 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     company: "Bitek Industries",
-    role: "Engineering Intern (Placement)",
+    role: "Engineering Intern",
     start: "2025",
     end: "Present",
     location: "South Africa",
     bullets: [
-      "R&D on trace-mineral feed additives — bench-scale synthesis, protocol development, and supplier sourcing.",
+      "R&D on feed additives — bench-scale synthesis, protocol development, and supplier sourcing.",
       "Built internal Python automation tools that replaced manual reporting workflows; demoed to senior leadership.",
       "Produced and peer-reviewed technical reports with rigorous citation and stoichiometry checking.",
       "Led a UI redesign of a desktop reporting utility using a formal brand-token design system.",
@@ -31,7 +31,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Metix",
-    role: "Software Intern",
+    role: "Engineering Intern",
     start: "Jan 2026",
     end: "Present",
     bullets: ["Built an AI-assisted document-generation tool for engineers."],

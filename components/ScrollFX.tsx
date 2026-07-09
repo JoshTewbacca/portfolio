@@ -31,6 +31,23 @@ export default function ScrollFX() {
           return;
         }
 
+        const cleanups: (() => void)[] = [];
+
+        // --- Keep ScrollTrigger positions in sync with layout shifts ---
+        // (accordions, images loading, etc. all change document height after
+        // triggers are first calculated; without this, reveals below the
+        // shift can end up permanently stuck at autoAlpha:0)
+        let refreshTimeout: ReturnType<typeof setTimeout>;
+        const resizeObserver = new ResizeObserver(() => {
+          clearTimeout(refreshTimeout);
+          refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 200);
+        });
+        resizeObserver.observe(document.body);
+        cleanups.push(() => {
+          clearTimeout(refreshTimeout);
+          resizeObserver.disconnect();
+        });
+
         // --- Hero entrance: name → title → tagline → CTAs ---
         gsap.from("[data-hero-item]", {
           y: 26,
@@ -70,7 +87,6 @@ export default function ScrollFX() {
         });
 
         // --- Magnetic pull + scale for primary CTAs ---
-        const cleanups: (() => void)[] = [];
         document.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((el) => {
           const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3.out" });
           const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3.out" });

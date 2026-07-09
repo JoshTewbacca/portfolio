@@ -6,14 +6,12 @@ import { ArrowUpRightIcon } from "./icons";
 export default function Projects() {
   return (
     <Section id="projects" title="Projects" kicker="Selected work">
-      <ul className="grid grid-flow-dense grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
         {projects.map((project) => (
           <li
             key={project.title}
             data-reveal
-            className={`card-glassify flex flex-col p-7 sm:p-8 ${
-              project.highlight ? "sm:col-span-2" : ""
-            }`}
+            className="card-glassify flex flex-col p-7 sm:p-8"
           >
             {project.image && (
               <div className="neuo-pressed-sm mb-6 overflow-hidden rounded-2xl">
