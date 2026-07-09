@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Theme tokens (neumorphism: one shared surface + dual shadows) ---------- */
+:root {
+  --bg: #e6e9ef;
+  --surface: #e6e9ef; /* same as bg — critical for neuo */
+  --shadow-dark: #bfc6d4;
+  --shadow-light: #ffffff;
+  --text: #2b3240; /* high contrast — keep readable */
+  --text-muted: #5c6675;
+  --accent: #2563eb; /* refined royal blue; deep enough for AA contrast on light surface */
+  --accent-contrast: #ffffff;
+  --radius: 20px;
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+.dark {
+  --bg: #23262d;
+  --surface: #23262d;
+  --shadow-dark: #191b20;
+  --shadow-light: #2d313a;
+  --text: #e7eaf0;
+  --text-muted: #9aa3b2;
+  --accent: #60a5fa; /* lighter blue for dark surfaces */
+  --accent-contrast: #17191e;
+  --glass-bg: rgba(40, 44, 52, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Expose tokens to Tailwind utilities (bg-surface, text-muted, text-accent, rounded-neuo…) */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --radius-neuo: var(--radius);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* ---------- Neumorphic utilities ---------- */
+/* In @layer components so Tailwind utilities (e.g. rounded-full) can override them */
+@layer components {
+.neuo-raised {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.neuo-raised-sm {
+  background: var(--surface);
+  border-radius: calc(var(--radius) * 0.6);
+  box-shadow:
+    5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+}
+
+.neuo-pressed {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow:
+    inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light);
+}
+
+.neuo-pressed-sm {
+  background: var(--surface);
+  border-radius: calc(var(--radius) * 0.6);
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Interactive: raised at rest → pressed on click */
+.neuo-interactive {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.neuo-interactive:active {
+  box-shadow:
+    inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light);
+  transform: none;
+}
+
+/* Small neuo pill (tags, skills) */
+.neuo-pill {
+  background: var(--surface);
+  border-radius: 9999px;
+  box-shadow:
+    3px 3px 6px var(--shadow-dark),
+    -3px -3px 6px var(--shadow-light);
+}
+
+/* ---------- Glass accent (nav, project-card hover, overlays ONLY) ---------- */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+}
+
+/* Project card: neuo at rest → glass on hover */
+.card-glassify {
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.card-glassify:hover,
+.card-glassify:focus-within {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border-color: var(--glass-border);
+  box-shadow:
+    12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+  transform: translateY(-4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-glassify:hover,
+  .card-glassify:focus-within {
+    transform: none;
+  }
+}
+}
+
+/* ---------- Focus visibility (accent ring, never removed) ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Accordion expand/collapse (CSS grid trick — animatable height) ---------- */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.accordion-panel > div {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-panel {
+    transition: none;
+  }
+}
+
+
