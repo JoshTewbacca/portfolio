@@ -11,7 +11,12 @@ export default function Experience() {
 
   return (
     <Section id="experience" title="Experience" kicker="Interactive CV">
-      <ol className="relative ml-3 space-y-8 border-l-2 border-(--shadow-dark) pl-8 sm:ml-4">
+      <ol className="relative ml-3 space-y-8 pl-8 sm:ml-4">
+        {/* Gradient timeline line */}
+        <span
+          aria-hidden="true"
+          className="gradient-line-v absolute bottom-0 left-0 top-0 w-0.5 rounded-full opacity-70"
+        />
         {experience.map((job, index) => {
           const open = openIndex === index;
           const panelId = `experience-panel-${index}`;

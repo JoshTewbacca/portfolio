@@ -26,7 +26,7 @@ npm run build    # production build + type check
 | ----------------------------------------- | ----------------------- |
 | Name, title, tagline, summary, location   | `content/profile.ts`    |
 | Email, LinkedIn, GitHub links             | `content/profile.ts`    |
-| Headshot                                  | drop `public/avatar.jpg` (initials show until it exists) |
+| Headshot                                  | replace `public/avatar.png` (initials fallback if missing) |
 | Jobs / internships (bullets, tags, dates) | `content/experience.ts` |
 | Projects (add, remove, feature, links)    | `content/projects.ts`   |
 | Skills and skill groups                   | `content/skills.ts`     |
@@ -44,7 +44,6 @@ Search the `content/` folder for `TODO`:
 - `experience.ts` — Metix dates
 - `education.ts` — degree start year
 - `skills.ts` — verify the tools list
-- Optional: drop a headshot at `public/avatar.jpg`
 
 ### Confidentiality note
 

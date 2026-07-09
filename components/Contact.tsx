@@ -9,7 +9,7 @@ export default function Contact() {
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">
             Contact
           </p>
-          <h2 className="max-w-xl text-3xl font-bold leading-tight text-text sm:text-4xl">
+          <h2 className="text-gradient-accent max-w-xl pb-1 text-3xl font-bold leading-tight sm:text-4xl">
             Have a role or project in mind? Let&apos;s talk.
           </h2>
           <a

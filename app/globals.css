@@ -12,6 +12,8 @@
   --text-muted: #5c6675;
   --accent: #2563eb; /* refined royal blue; deep enough for AA contrast on light surface */
   --accent-contrast: #ffffff;
+  --grad-from: #1e3a8a; /* deep navy → */
+  --grad-to: #3b82f6; /* → bright blue */
   --radius: 20px;
   --glass-bg: rgba(255, 255, 255, 0.35);
   --glass-border: rgba(255, 255, 255, 0.5);
@@ -26,6 +28,8 @@
   --text-muted: #9aa3b2;
   --accent: #60a5fa; /* lighter blue for dark surfaces */
   --accent-contrast: #17191e;
+  --grad-from: #3b82f6; /* rich blue → */
+  --grad-to: #a5cdfd; /* → pale sky */
   --glass-bg: rgba(40, 44, 52, 0.45);
   --glass-border: rgba(255, 255, 255, 0.08);
 }
@@ -167,6 +171,25 @@ h4 {
     transform: none;
   }
 }
+}
+
+/* ---------- Blue gradient accents (dark → light blue) ---------- */
+.text-gradient-accent {
+  background: linear-gradient(105deg, var(--grad-from) 15%, var(--grad-to) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bar {
+  height: 4px;
+  width: 3rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--grad-from), var(--grad-to));
+}
+
+.gradient-line-v {
+  background: linear-gradient(180deg, var(--grad-from), var(--grad-to));
 }
 
 /* ---------- Focus visibility (accent ring, never removed) ---------- */

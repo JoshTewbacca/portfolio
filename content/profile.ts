@@ -18,7 +18,7 @@ export const profile: Profile = {
   email: "joshtew007@gmail.com",
   linkedin: "", // TODO: full LinkedIn URL, e.g. "https://www.linkedin.com/in/..."
   github: "", // TODO: full GitHub URL, or leave "" to hide
-  avatar: "/avatar.jpg", // drop a headshot at /public/avatar.jpg — initials show until it exists
+  avatar: "/avatar.png", // headshot in /public — initials fallback shows if the file is missing
   summary:
     "Final-year Mechanical Engineering student at UCT (First Class), currently on placement at Bitek Industries where I work across R&D, automation software, and technical documentation. I like problems that sit between hardware, code, and clear communication.",
 };

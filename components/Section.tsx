@@ -20,9 +20,10 @@ export default function Section({
               {kicker}
             </p>
           )}
-          <h2 className="mb-10 text-3xl font-bold text-text sm:text-4xl">
+          <h2 className="mb-3 text-3xl font-bold text-text sm:text-4xl">
             {title}
           </h2>
+          <div aria-hidden="true" className="gradient-bar mb-10" />
         </div>
         {children}
       </div>

@@ -42,7 +42,7 @@ export default function Hero() {
           </p>
           <h1
             data-hero-item
-            className="mb-4 text-5xl font-bold leading-[1.05] text-text sm:text-6xl md:text-7xl"
+            className="text-gradient-accent mb-4 pb-2 text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
           >
             {profile.name}
           </h1>
