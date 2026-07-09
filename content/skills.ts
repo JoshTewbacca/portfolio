@@ -4,14 +4,21 @@ export type SkillGroup = { category: string; items: string[] };
 export const skills: SkillGroup[] = [
   {
     category: "Engineering",
-    items: ["CFD", "Thermofluids", "Dynamics & Vibrations", "Heat Transfer", "CAD"],
+    items: [
+      "CFD (Ansys Fluent)",
+      "Thermofluids",
+      "Dynamics & Vibrations",
+      "Heat Transfer",
+      "CAD (SolidWorks)",
+      "Numerical Methods & Simulation",
+    ],
   },
   {
     category: "Software",
-    items: ["Python", "MATLAB", "JavaScript / TypeScript", "Next.js", "Git"],
+    items: ["Python", "Java", "C#", "MATLAB", "JavaScript / TypeScript", "Next.js", "Git"],
   },
   {
     category: "Tools",
-    items: ["Excel Modelling", "Claude Code", "Firebase / Vercel"],
+    items: ["Excel / VBA", "Technical Documentation", "Claude Code", "Firebase / Vercel"],
   },
 ];

@@ -37,4 +37,15 @@ export const experience: Experience[] = [
     bullets: ["Built an AI-assisted document-generation tool for engineers."],
     tags: ["AI", "Tooling", "Software"],
   },
+  {
+    company: "SWOT Club",
+    role: "Mathematics & Science Tutor",
+    start: "Mar 2025",
+    end: "Present",
+    bullets: [
+      "Tutor Grade 12 Mathematics, Physical Science and IT.",
+      "Raised students' exam scores by an average of 18% in one term.",
+    ],
+    tags: ["Tutoring", "Mathematics", "Physical Science"],
+  },
 ];

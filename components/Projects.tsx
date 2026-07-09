@@ -11,7 +11,7 @@ export default function Projects() {
           <li
             key={project.title}
             data-reveal
-            className="card-glassify flex flex-col p-7 sm:p-8"
+            className="card-glassify flex flex-col p-7 last:[&:nth-child(odd)]:sm:col-span-2 sm:p-8"
           >
             {project.image && (
               <div className="neuo-pressed-sm mb-6 overflow-hidden rounded-2xl">

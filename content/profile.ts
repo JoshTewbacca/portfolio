@@ -16,8 +16,8 @@ export const profile: Profile = {
   tagline: "Turning first-principles engineering into things that ship.",
   location: "Cape Town, South Africa",
   email: "joshtew007@gmail.com",
-  linkedin: "", // TODO: full LinkedIn URL, e.g. "https://www.linkedin.com/in/..."
-  github: "", // TODO: full GitHub URL, or leave "" to hide
+  linkedin: "https://www.linkedin.com/in/joshua-tew-b50712367",
+  github: "https://github.com/JoshTewbacca",
   avatar: "/avatar.png", // headshot in /public — initials fallback shows if the file is missing
   summary:
     "Final-year Mechanical Engineering student at UCT (First Class, Dean's Merit List 2023–2025) with strengths in CFD, process development and engineering software. Experienced across both R&D (scaling chemical manufacturing routes for feed additives) and software, building production AI tools. Strong mathematical and problem-solving foundation, quick to pick up new domains, and driven to see technical projects through to completion.",

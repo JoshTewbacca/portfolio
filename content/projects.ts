@@ -19,5 +19,10 @@ export const projects: Project[] = [
       "Python simulation of a flexible-arm trebuchet with full dynamic modelling and report.",
     tags: ["Python", "Dynamics", "Simulation"],
   },
-  // TODO: add/trim — piston-pump design, psychrometrics sim, tutoring tools, etc.
+  {
+    title: "Double-Acting Reciprocating Piston Pump Design",
+    description:
+      "Piston pump design with Python parametric optimisation.",
+    tags: ["Python", "Optimisation", "Mechanical Design"],
+  },
 ];
