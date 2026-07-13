@@ -45,9 +45,11 @@
   --radius-neuo: var(--radius);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-display: var(--font-syne), var(--font-space-grotesk), ui-sans-serif, sans-serif;
 }
 
-html {
+/* Native smooth scroll only when Lenis isn't driving (reduced motion / no-JS) */
+html:not(.lenis) {
   scroll-behavior: smooth;
 }
 
@@ -57,6 +59,21 @@ html {
   }
 }
 
+/* ---------- Lenis recommended styles ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -64,12 +81,15 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+/* In @layer base so font utilities (e.g. font-display) can override */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
 }
 
 ::selection {
@@ -190,6 +210,51 @@ h4 {
 
 .gradient-line-v {
   background: linear-gradient(180deg, var(--grad-from), var(--grad-to));
+}
+
+/* ---------- Ghost section numbers (outlined, drift on scroll) ---------- */
+.section-index {
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--text) 20%, transparent);
+}
+
+/* ---------- Skills marquee (track holds two identical lists; -50% loops) ---------- */
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+}
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------- Hero aurora: blurred accent blobs drifting slowly ---------- */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  filter: blur(80px);
+  opacity: 0.16;
+  animation: aurora-drift 16s ease-in-out infinite;
+}
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3rem, -2.5rem) scale(1.18);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora {
+    animation: none;
+  }
 }
 
 /* ---------- Focus visibility (accent ring, never removed) ---------- */

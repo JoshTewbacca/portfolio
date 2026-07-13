@@ -67,7 +67,7 @@ export default function Experience() {
   };
 
   return (
-    <Section id="experience" title="Experience" kicker="Interactive CV">
+    <Section id="experience" index={2} title="Experience" kicker="Interactive CV">
       <ol ref={olRef} className="relative ml-3 space-y-8 pl-8 sm:ml-4">
         {/* Gradient timeline line — top/height are measured from the first/last dot centers */}
         <span

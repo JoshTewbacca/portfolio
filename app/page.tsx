@@ -5,9 +5,12 @@ import EducationSection from "@/components/EducationSection";
 import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
+import Preloader from "@/components/Preloader";
 import Projects from "@/components/Projects";
 import ScrollFX from "@/components/ScrollFX";
 import Skills from "@/components/Skills";
+import SkillsMarquee from "@/components/SkillsMarquee";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function Home() {
   return (
@@ -15,6 +18,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <SkillsMarquee />
         <About />
         <Experience />
         <Projects />
@@ -23,7 +27,9 @@ export default function Home() {
       </main>
       <Contact />
       <ScrollFX />
+      <SmoothScroll />
       <CustomCursor />
+      <Preloader />
     </>
   );
 }

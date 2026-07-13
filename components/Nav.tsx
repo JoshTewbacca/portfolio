@@ -16,6 +16,21 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const [hidden, setHidden] = useState(false);
+
+  // Hide on scroll down, reveal on scroll up (or near the top)
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < 80) setHidden(false);
+      else if (y > lastY + 2) setHidden(true);
+      else if (y < lastY - 2) setHidden(false);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Scrollspy: highlight the section currently in the middle of the viewport
   useEffect(() => {
@@ -36,7 +51,11 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <header
+      className={`fixed inset-x-0 top-4 z-50 flex justify-center px-4 transition-transform duration-300 ease-out ${
+        hidden && !open ? "-translate-y-[150%]" : "translate-y-0"
+      }`}
+    >
       <nav
         aria-label="Main navigation"
         className="glass flex w-full max-w-3xl items-center justify-between gap-2 rounded-full py-2 pl-5 pr-2 shadow-lg shadow-black/5"

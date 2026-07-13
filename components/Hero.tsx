@@ -27,6 +27,9 @@ export default function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
       >
+        {/* Drifting accent glow behind the neuo shapes */}
+        <div className="aurora -left-32 top-1/4 h-96 w-96" />
+        <div className="aurora bottom-[8%] right-[4%] h-80 w-80 [animation-delay:-8s]" />
         <div className="neuo-pressed absolute -right-24 top-24 h-72 w-72 rounded-full opacity-70 sm:right-[8%]" />
         <div className="neuo-raised absolute -left-20 bottom-24 h-48 w-48 rounded-full opacity-60" />
         <div className="neuo-pressed absolute left-[12%] top-[18%] h-20 w-20 rounded-full opacity-50" />
@@ -42,7 +45,7 @@ export default function Hero() {
           </p>
           <h1
             data-hero-item
-            className="text-gradient-accent mb-4 pb-2 text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl"
+            className="text-gradient-accent mb-4 pb-2 font-display text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
           >
             {profile.name}
           </h1>

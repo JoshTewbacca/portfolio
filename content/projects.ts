@@ -4,6 +4,7 @@ export type Project = {
   tags: string[];
   links?: { label: string; url: string }[];
   image?: string; // /public path, optional
+  status?: string; // e.g. "In development" — renders as a badge on the card
 };
 
 export const projects: Project[] = [
@@ -12,6 +13,7 @@ export const projects: Project[] = [
     description:
       "CFD study of active aero on the DrivAer reference model — investigating F1-derived aerodynamic principles applied to production vehicles.",
     tags: ["CFD", "Aerodynamics", "Research"],
+    status: "In development",
   },
   {
     title: "3-DoF Flexible-Arm Trebuchet Simulation",

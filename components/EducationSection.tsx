@@ -3,7 +3,7 @@ import Section from "./Section";
 
 export default function EducationSection() {
   return (
-    <Section id="education" title="Education" kicker="Foundations">
+    <Section id="education" index={5} title="Education" kicker="Foundations">
       <div className="space-y-6">
         {education.map((entry) => (
           <div key={entry.institution} data-reveal className="neuo-raised p-8 sm:p-10">
