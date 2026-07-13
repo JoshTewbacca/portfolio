@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, Syne } from "next/font/google";
+import { Inter, Schibsted_Grotesk, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "next-themes";
 import { profile } from "@/content/profile";
@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 // Display face for the name only (hero + preloader)
-const syne = Syne({
-  variable: "--font-syne",
+const schibsted = Schibsted_Grotesk({
+  variable: "--font-schibsted",
   subsets: ["latin"],
   display: "swap",
 });
@@ -51,7 +51,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${syne.variable} antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${schibsted.variable} antialiased`}
     >
       <body className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
